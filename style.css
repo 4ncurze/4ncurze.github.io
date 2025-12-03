@@ -22,3 +22,59 @@ img {
 img:hover {
   transform: scale(1.05);
 }
+
+/* ===== Recommendations Section ===== */
+.recommendations-section {
+    padding: 80px 0;
+    background: var(--bg-color-primary);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.recommendations-section .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.recommendations-section .section-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--text-muted);
+}
+
+/* 4 columns fixed */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 30px;
+}
+
+.recommendations-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.recommendations-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* For mobile and tablets */
+@media (max-width: 992px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
