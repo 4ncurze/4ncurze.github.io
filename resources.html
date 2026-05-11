@@ -1,465 +1,736 @@
+# Modern Cyber Security Resources Page
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Resources | 4ncurze</title>
+    <title>4ncurze | Cyber Security Resources</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #0d1117;
+            background: #050816;
             color: white;
+            overflow-x: hidden;
         }
 
-        /* HEADER */
+        /* BACKGROUND GLOW */
 
-        .header {
-            background: linear-gradient(135deg, #00e5ff, #0047ff);
-            padding: 90px 20px;
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: rgba(0, 255, 255, 0.08);
+            filter: blur(120px);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: rgba(0, 89, 255, 0.08);
+            filter: blur(120px);
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(14px);
+            background: rgba(5, 8, 22, 0.65);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 999;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #00f5ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #d7e4ff;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #00f5ff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 100px 8%;
         }
 
-        .header h1 {
-            font-size: 60px;
-            margin-bottom: 15px;
+        .hero-content {
+            max-width: 950px;
         }
 
-        .header p {
-            font-size: 22px;
-            font-weight: bold;
+        .hero h1 {
+            font-size: 75px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #00f5ff, #3f7dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #b8c4dd;
+            font-size: 20px;
+            line-height: 1.9;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00f5ff, #005eff);
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.55);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
         }
 
         /* SECTION */
 
-        .section {
-            width: 90%;
+        section {
+            width: 88%;
             margin: auto;
-            padding: 70px 0;
+            padding: 90px 0;
         }
 
-        .section-title {
-            font-size: 40px;
-            margin-bottom: 45px;
-            color: #00e5ff;
-            border-left: 6px solid #00e5ff;
-            padding-left: 18px;
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header span {
+            color: #00f5ff;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            margin-top: 12px;
+        }
+
+        .section-header p {
+            color: #9eb0d1;
+            margin-top: 15px;
+            max-width: 700px;
+            line-height: 1.8;
         }
 
         /* GRID */
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 35px;
         }
 
         /* CARD */
 
         .card {
-            background: #161b22;
-            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
             overflow: hidden;
-            border: 1px solid #30363d;
-            transition: 0.4s;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
+            transition: 0.45s;
+            position: relative;
+            backdrop-filter: blur(12px);
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+            transform: translateY(-12px);
+            border-color: rgba(0, 245, 255, 0.45);
+            box-shadow: 0 0 45px rgba(0, 245, 255, 0.12);
         }
 
-        /* VIDEO */
-
-        .video-box iframe {
+        .card iframe {
             width: 100%;
             height: 230px;
             border: none;
         }
 
-        /* CONTENT */
-
         .card-content {
-            padding: 25px;
+            padding: 28px;
         }
 
-        .card-content h3 {
-            color: #00e5ff;
+        .tag {
+            display: inline-block;
+            background: rgba(0, 245, 255, 0.12);
+            color: #00f5ff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            margin-bottom: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .card h3 {
+            font-size: 25px;
             margin-bottom: 15px;
-            font-size: 24px;
         }
 
-        .card-content p {
-            color: #c9d1d9;
-            line-height: 1.7;
+        .card p {
+            color: #a9b6cf;
+            line-height: 1.8;
             margin-bottom: 25px;
             font-size: 15px;
         }
 
-        /* BUTTON */
+        .card-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #00e5ff;
-            color: black;
+        .small-btn {
+            padding: 12px 18px;
+            border-radius: 10px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 600;
             transition: 0.3s;
         }
 
-        .btn:hover {
-            background: white;
+        .youtube-btn {
+            background: #ff0000;
+            color: white;
+        }
+
+        .youtube-btn:hover {
+            opacity: 0.85;
+        }
+
+        .spotify-btn {
+            background: #1db954;
+            color: white;
+        }
+
+        .spotify-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* STATS */
+
+        .stats {
+            width: 88%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 22px;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 42px;
+            color: #00f5ff;
+            margin-bottom: 12px;
+        }
+
+        .stat-box p {
+            color: #a9b6cf;
         }
 
         /* FOOTER */
 
-        .footer {
+        footer {
+            margin-top: 90px;
+            padding: 50px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
-            padding: 40px;
-            background: #161b22;
-            border-top: 1px solid #30363d;
-            margin-top: 60px;
+            color: #9eb0d1;
         }
 
-        .footer a {
-            color: #00e5ff;
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .socials a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 20px;
+            transition: 0.3s;
             text-decoration: none;
-            font-weight: bold;
+        }
+
+        .socials a:hover {
+            background: #00f5ff;
+            color: black;
+            transform: translateY(-5px);
         }
 
         /* MOBILE */
 
-        @media(max-width:768px) {
+        @media(max-width: 768px) {
 
-            .header h1 {
-                font-size: 38px;
+            .hero h1 {
+                font-size: 42px;
             }
 
-            .header p {
-                font-size: 18px;
+            .hero p {
+                font-size: 16px;
             }
 
-            .section-title {
-                font-size: 28px;
+            .section-header h2 {
+                font-size: 34px;
             }
 
+            .nav-links {
+                display: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- NAVBAR -->
 
-    <div class="header">
-        <h1>Cyber Security Resources</h1>
-        <p>Videos • Podcasts • Bug Hunting • Cyber Awareness</p>
+    <div class="navbar">
+        <div class="logo">4ncurze</div>
+
+        <div class="nav-links">
+            <a href="#videos">Videos</a>
+            <a href="#spotify">Spotify</a>
+            <a href="#podcasts">Podcasts</a>
+        </div>
     </div>
 
-    <!-- ========================= -->
+    <!-- HERO -->
+
+    <div class="hero">
+        <div class="hero-content">
+
+            <h1>Cyber Security Learning Hub</h1>
+
+            <p>
+                Explore premium cyber security resources, bug bounty series,
+                cyber awareness videos, Hindi & English podcasts,
+                and practical ethical hacking content by 4ncurze.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="https://www.youtube.com/@4ncurze" class="btn btn-primary" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                    Explore YouTube
+                </a>
+
+                <a href="#videos" class="btn btn-secondary">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Browse Content
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat-box">
+            <h3>7+</h3>
+            <p>Learning Series</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>100+</h3>
+            <p>Cyber Security Videos</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Hindi + English</h3>
+            <p>Multilingual Podcasts</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Bug Bounty</h3>
+            <p>Practical Learning</p>
+        </div>
+
+    </div>
+
     <!-- YOUTUBE VIDEOS -->
-    <!-- ========================= -->
 
-    <div class="section">
+    <section id="videos">
 
-        <h2 class="section-title">
-            🎥 YouTube Video Series
-        </h2>
+        <div class="section-header">
+            <span>YOUTUBE SERIES</span>
+            <h2>Cyber Security Videos</h2>
+            <p>
+                Practical cyber security learning playlists focused on awareness,
+                ethical hacking, cyber crime prevention and bug bounty hunting.
+            </p>
+        </div>
 
         <div class="grid">
 
-            <!-- SEASON 01 -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkNoI0Ipw8Tz3aVaXrtrZP8m"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkNoI0Ipw8Tz3aVaXrtrZP8m" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Cyber Security & Cyber Crime Awareness Season 01 (Hindi)</h3>
-
+                    <span class="tag">SEASON 01</span>
+                    <h3>Cyber Crime Awareness</h3>
                     <p>
-                        Learn cyber security awareness,
-                        online scam prevention,
-                        social engineering attacks
-                        and internet safety techniques.
+                        Learn online safety, scams, phishing,
+                        cyber attacks and digital awareness.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkNoI0Ipw8Tz3aVaXrtrZP8m"
-                        target="_blank" class="btn">
-                        Watch Series
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkNoI0Ipw8Tz3aVaXrtrZP8m"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Playlist
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- SEASON 02 -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkOP5O55lIfBC--SzWjRfZbO"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkOP5O55lIfBC--SzWjRfZbO" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Cyber Security & Cyber Crime Awareness Season 02 (Hindi)</h3>
-
+                    <span class="tag">SEASON 02</span>
+                    <h3>Advanced Cyber Awareness</h3>
                     <p>
-                        Advanced cyber awareness series
-                        covering digital privacy,
-                        cyber threats, hacking methods
-                        and practical safety tips.
+                        Advanced practical awareness content,
+                        hacking methods and privacy protection.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkOP5O55lIfBC--SzWjRfZbO"
-                        target="_blank" class="btn">
-                        Watch Series
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkOP5O55lIfBC--SzWjRfZbO"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Playlist
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- BUG HUNTING -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkN3Z4nc9SyY-KDJIX1fuvX1"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkN3Z4nc9SyY-KDJIX1fuvX1" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Bug Hunting Series :)</h3>
-
+                    <span class="tag">BUG BOUNTY</span>
+                    <h3>Bug Hunting Series</h3>
                     <p>
-                        Practical bug bounty hunting series
-                        covering vulnerability discovery,
-                        reconnaissance and web application testing.
+                        Recon, vulnerability discovery,
+                        web application testing and bug bounty workflow.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkN3Z4nc9SyY-KDJIX1fuvX1"
-                        target="_blank" class="btn">
-                        Watch Series
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkN3Z4nc9SyY-KDJIX1fuvX1"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Playlist
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- SHORTS -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkO9ZqBjj1g6Gulqp-_aOy03"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkO9ZqBjj1g6Gulqp-_aOy03" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Learn Cyber Security – Shorts</h3>
-
+                    <span class="tag">SHORTS</span>
+                    <h3>Learn Cyber Security</h3>
                     <p>
-                        Quick cyber security learning shorts
-                        covering hacking concepts,
-                        cyber awareness and practical tips.
+                        Short-form cyber security content with quick tips,
+                        tricks and awareness lessons.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkO9ZqBjj1g6Gulqp-_aOy03"
-                        target="_blank" class="btn">
-                        Watch Shorts
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkO9ZqBjj1g6Gulqp-_aOy03"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Playlist
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- FUNDAMENTALS -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkO4c55TS3JXMjPNxuRq4kuG"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkO4c55TS3JXMjPNxuRq4kuG" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Cyber Security Fundamentals (Hindi)</h3>
-
+                    <span class="tag">FUNDAMENTALS</span>
+                    <h3>Cyber Security Fundamentals</h3>
                     <p>
-                        Beginner-friendly cyber security fundamentals
-                        explained in simple Hindi language
-                        with practical examples.
+                        Beginner-friendly Hindi series explaining practical
+                        cyber security concepts.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkO4c55TS3JXMjPNxuRq4kuG"
-                        target="_blank" class="btn">
-                        Watch Series
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkO4c55TS3JXMjPNxuRq4kuG"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Playlist
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <!-- ========================= -->
-    <!-- SPOTIFY PODCASTS -->
-    <!-- ========================= -->
+    <!-- SPOTIFY -->
 
-    <div class="section">
+    <section id="spotify">
 
-        <h2 class="section-title">
-            🎧 Spotify Podcasts
-        </h2>
+        <div class="section-header">
+            <span>SPOTIFY PODCASTS</span>
+            <h2>Cyber Security Podcasts</h2>
+            <p>
+                Listen to cyber security discussions, ethical hacking,
+                privacy awareness and cyber crime talks in Hindi & English.
+            </p>
+        </div>
 
         <div class="grid">
 
-            <!-- ENGLISH -->
-
             <div class="card">
-
                 <div class="card-content">
-
-                    <h3>Cyber Security and Talks English</h3>
-
+                    <span class="tag">ENGLISH PODCAST</span>
+                    <h3>Cyber Security & Talks English</h3>
                     <p>
-                        Cyber security podcast discussing
-                        ethical hacking, online privacy,
-                        bug bounty, cyber awareness
-                        and latest security trends.
+                        Ethical hacking, cyber trends,
+                        privacy, online threats and digital security discussions.
                     </p>
 
-                    <a href="https://open.spotify.com/show/5Dd23VaXUDUsReWHl5FjGn?si=b3f0e94cff704950"
-                        target="_blank" class="btn">
-                        Listen on Spotify
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://open.spotify.com/show/5Dd23VaXUDUsReWHl5FjGn?si=b3f0e94cff704950"
+                            target="_blank" class="small-btn spotify-btn">
+                            <i class="fa-brands fa-spotify"></i>
+                            Listen Now
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- HINDI -->
-
             <div class="card">
-
                 <div class="card-content">
-
-                    <h3>Cyber Security and Talks Hindi</h3>
-
+                    <span class="tag">HINDI PODCAST</span>
+                    <h3>Cyber Security & Talks Hindi</h3>
                     <p>
-                        Hindi cyber security podcast
-                        focused on internet safety,
-                        online scams, cyber crime awareness
-                        and practical cyber tips.
+                        Hindi cyber security podcast focused on cyber awareness,
+                        scams and practical internet safety.
                     </p>
 
-                    <a href="https://open.spotify.com/show/3cG54jMKZaeeiaoZql29Pg?si=ce85806aa4214ca8"
-                        target="_blank" class="btn">
-                        Listen on Spotify
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://open.spotify.com/show/3cG54jMKZaeeiaoZql29Pg?si=ce85806aa4214ca8"
+                            target="_blank" class="small-btn spotify-btn">
+                            <i class="fa-brands fa-spotify"></i>
+                            Listen Now
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <!-- ========================= -->
     <!-- YOUTUBE PODCASTS -->
-    <!-- ========================= -->
 
-    <div class="section">
+    <section id="podcasts">
 
-        <h2 class="section-title">
-            🎙️ YouTube Podcast Series
-        </h2>
+        <div class="section-header">
+            <span>YOUTUBE PODCASTS</span>
+            <h2>Podcast Video Series</h2>
+            <p>
+                Long-form podcast discussions covering cyber security,
+                ethical hacking, digital privacy and awareness.
+            </p>
+        </div>
 
         <div class="grid">
 
-            <!-- ENGLISH PODCAST -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkMKOQPSBFL82LSImRaWMfoM"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkMKOQPSBFL82LSImRaWMfoM" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Cyber Security and Talks English</h3>
-
+                    <span class="tag">ENGLISH PODCAST</span>
+                    <h3>Cyber Security & Talks English</h3>
                     <p>
-                        English cyber security podcast
-                        discussing ethical hacking,
-                        digital privacy,
-                        cyber awareness and security trends.
+                        Cyber discussions, privacy awareness,
+                        ethical hacking and cyber trends in English.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkMKOQPSBFL82LSImRaWMfoM"
-                        target="_blank" class="btn">
-                        Watch Podcast
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkMKOQPSBFL82LSImRaWMfoM"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Podcast
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- HINDI PODCAST -->
-
-            <div class="card video-box">
-
-                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkPzoLDHohaD3yzsNy_7oYXH"
-                    allowfullscreen>
-                </iframe>
+            <div class="card">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PL1o9WKczzfkPzoLDHohaD3yzsNy_7oYXH" allowfullscreen></iframe>
 
                 <div class="card-content">
-
-                    <h3>Cyber Security and Talks Hindi</h3>
-
+                    <span class="tag">HINDI PODCAST</span>
+                    <h3>Cyber Security & Talks Hindi</h3>
                     <p>
-                        Hindi cyber security podcast series
-                        covering cyber awareness,
-                        online scams,
-                        dark web discussions and internet safety.
+                        Hindi cyber podcast discussing cyber awareness,
+                        dark web, internet safety and online scams.
                     </p>
 
-                    <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkPzoLDHohaD3yzsNy_7oYXH"
-                        target="_blank" class="btn">
-                        Watch Podcast
-                    </a>
-
+                    <div class="card-buttons">
+                        <a href="https://www.youtube.com/playlist?list=PL1o9WKczzfkPzoLDHohaD3yzsNy_7oYXH"
+                            target="_blank" class="small-btn youtube-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                            Watch Podcast
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-    </div>
+    </section>
 
     <!-- FOOTER -->
 
-    <div class="footer">
+    <footer>
 
-        © 2026 4ncurze | Cyber Security Portfolio
+        <h2>4ncurze Cyber Security Portfolio</h2>
 
-        <br><br>
+        <p style="margin-top:15px;">
+            Ethical Hacking • Bug Bounty • Cyber Awareness • Podcasts
+        </p>
 
-        <a href="https://www.youtube.com/@4ncurze" target="_blank">
-            Visit My YouTube Channel
-        </a>
+        <div class="socials">
 
-    </div>
+            <a href="https://www.youtube.com/@4ncurze" target="_blank">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://open.spotify.com/show/3cG54jMKZaeeiaoZql29Pg?si=ce85806aa4214ca8"
+                target="_blank">
+                <i class="fa-brands fa-spotify"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+        </div>
+
+        <p style="margin-top:35px; font-size:14px; color:#7f8ba3;">
+            © 2026 4ncurze. All Rights Reserved.
+        </p>
+
+    </footer>
 
 </body>
 
 </html>
+```
